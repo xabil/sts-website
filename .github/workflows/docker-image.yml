@@ -1,0 +1,30 @@
+name: Docker Image CI
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - uses: azure/docker-login@v1
+      with:
+        login-server: 'index.docker.io'
+        username: '${{ secrets.DOCKER_USERNAME }}'
+        password: '${{ secrets.DOCKER_PASSWORD }}'
+    - name: Build the Docker image for server
+      run: |
+        docker build . -f Dockerfile -t farsan/sts-website_server:$(date +%s) -t farsan/sts-website_server:latest
+        docker push farsan/sts-website_server:$(date +%s)
+        docker push farsan/sts-website_server:latest
+    - name: Build the Docker image for server
+      run: |
+        docker build ./nginx/ -f Dockerfile -t farsan/sts-website_nginx:$(date +%s) -t farsan/sts-website_nginx:latest
+        docker push farsan/sts-website_nginx:$(date +%s)
+        docker push farsan/sts-website_nginx:latest
