@@ -15,14 +15,13 @@ jobs:
     - uses: actions/checkout@v2
     - uses: azure/docker-login@v1
       with:
-        login-server: 'index.docker.io'
-        username: '${{ secrets.DOCKER_USERNAME }}'
-        password: '${{ secrets.DOCKER_PASSWORD }}'
+        username: ${{ secrets.DOCKER_USERNAME }}
+        password: ${{ secrets.DOCKER_PASSWORD }}
     - name: Build the Docker image for server
       run: |
-        docker build . -f Dockerfile -t farsan/sts-website_server:latest
-        docker push farsan/sts-website_server:latest
+        docker build . -f Dockerfile -t ${{ secrets.DOCKER_USERNAME }}/sts-website_server:latest
+        docker push ${{ secrets.DOCKER_USERNAME }}/sts-website_server:latest
     - name: Build the Docker image for nginx
       run: |
-        docker build ./nginx/ -f Dockerfile -t farsan/sts-website_nginx:latest
-        docker push farsan/sts-website_nginx:latest
+        docker build ./nginx/ -f Dockerfile -t ${{ secrets.DOCKER_USERNAME }}/sts-website_nginx:latest
+        docker push ${{ secrets.DOCKER_USERNAME }}/sts-website_nginx:latest
