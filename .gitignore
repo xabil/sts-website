@@ -1,0 +1,17 @@
+/**/.env*
+static
+media
+covhtml
+*.DS_Store
+*.pyc
+__pycache__
+db.sqlite3
+*.sw?
+*.un~
+*,cover
+.coverage
+keyfiles/
+.idea
+.env
+.prodenv
+local.py
