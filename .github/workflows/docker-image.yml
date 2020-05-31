@@ -20,11 +20,9 @@ jobs:
         password: '${{ secrets.DOCKER_PASSWORD }}'
     - name: Build the Docker image for server
       run: |
-        docker build . -f Dockerfile -t farsan/sts-website_server:$(date +%s) -t farsan/sts-website_server:latest
-        docker push farsan/sts-website_server:$(date +%s)
+        docker build . -f Dockerfile -t farsan/sts-website_server:latest
         docker push farsan/sts-website_server:latest
-    - name: Build the Docker image for server
+    - name: Build the Docker image for nginx
       run: |
-        docker build ./nginx/ -f Dockerfile -t farsan/sts-website_nginx:$(date +%s) -t farsan/sts-website_nginx:latest
-        docker push farsan/sts-website_nginx:$(date +%s)
+        docker build ./nginx/ -f Dockerfile -t farsan/sts-website_nginx:latest
         docker push farsan/sts-website_nginx:latest
