@@ -1,12 +1,9 @@
 from django.db import models
-
-from wagtail.core.models import Page
-from wagtail.core.fields import RichTextField
-from wagtail.admin.edit_handlers import FieldPanel
-from wagtail.search import index
-
 from modelcluster.fields import ParentalKey
 from modelcluster.models import ClusterableModel
+from wagtail.admin.edit_handlers import FieldPanel
+from wagtail.core.fields import RichTextField
+from wagtail.core.models import Page
 
 
 class HomePageMenu(ClusterableModel):

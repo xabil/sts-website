@@ -1,6 +1,6 @@
 import os
 
-from .production import *   # noqa
+from .production import *  # noqa
 
 DEBUG = False
 

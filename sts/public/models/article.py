@@ -1,23 +1,13 @@
 from django.db import models
-
-from wagtail.core.models import (
-    Page,
-    Orderable
-)
+from modelcluster.contrib.taggit import ClusterTaggableManager
+from modelcluster.fields import ParentalKey
+from taggit.models import TaggedItemBase
+from wagtail.admin.edit_handlers import (FieldPanel, InlinePanel,
+                                         MultiFieldPanel)
 from wagtail.core.fields import RichTextField
-from wagtail.admin.edit_handlers import (
-    FieldPanel,
-    MultiFieldPanel,
-    InlinePanel,
-)
+from wagtail.core.models import Orderable, Page
 from wagtail.images.edit_handlers import ImageChooserPanel
 from wagtail.search import index
-
-from modelcluster.fields import ParentalKey
-from modelcluster.contrib.taggit import ClusterTaggableManager
-from modelcluster.models import ClusterableModel
-
-from taggit.models import TaggedItemBase
 
 
 class ArticleIndexPage(Page):

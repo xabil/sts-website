@@ -1,14 +1,8 @@
-from django.contrib import admin
-from wagtail.contrib.modeladmin.options import (
-    ModelAdmin,
-    modeladmin_register,
-)
+from wagtail.contrib.modeladmin.options import ModelAdmin, modeladmin_register
 
 from public.models.home import HomePageMenu
-from public.models.link import (
-    LinkGroup,
-    Link
-)
+from public.models.link import Link, LinkGroup
+
 
 class LinkAdmin(ModelAdmin):
     """
@@ -55,6 +49,6 @@ class MenuAdmin(ModelAdmin):
     search_fields = ("name",)
 
 
-modeladmin_register(LinkAdmin) 
-modeladmin_register(LinkGroupAdmin) 
-modeladmin_register(MenuAdmin) 
+modeladmin_register(LinkAdmin)
+modeladmin_register(LinkGroupAdmin)
+modeladmin_register(MenuAdmin)
